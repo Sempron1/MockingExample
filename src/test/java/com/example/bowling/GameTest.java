@@ -18,7 +18,8 @@ class GameTest {
     @Test
     void knockedDownedPinsShouldIncreaseTotalScore() {
         Game game = new Game();
-        int result = game.pins(10);
+        game.pins(10);
+        var result = game.score();
         assertEquals(10,result);
     }
 
