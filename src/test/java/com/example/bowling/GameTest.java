@@ -23,5 +23,12 @@ class GameTest {
         assertEquals(10,result);
     }
 
-    
+    @Test
+    void roundShouldIncreaseAfterTwoRolls() {
+        Game game = new Game();
+        game.roll();
+        game.roll();
+        assertEquals(1,game.roundCounter);
+    }
+
 }
