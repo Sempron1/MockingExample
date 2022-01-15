@@ -18,8 +18,8 @@ class GameTest {
     @Test
     void AddScoreMethodShouldIncreaseTotalScore() {
         Game game = new Game();
-        int score = 10;
-        int result = game.addScore(score);
+
+        int result = game.addScore(10);
         assertEquals(10,result);
     }
     
