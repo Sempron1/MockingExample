@@ -10,8 +10,9 @@ public class Game {
         return totalScore;
     }
 
-    public int addScore(int score) {
-        totalScore += score;
+    public int pins(int roll) {
+        totalScore += roll;
         return totalScore;
     }
+
 }

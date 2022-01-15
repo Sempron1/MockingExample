@@ -16,11 +16,11 @@ class GameTest {
     }
 
     @Test
-    void AddScoreMethodShouldIncreaseTotalScore() {
+    void knockedDownedPinsShouldIncreaseTotalScore() {
         Game game = new Game();
-
-        int result = game.addScore(10);
+        int result = game.pins(10);
         assertEquals(10,result);
     }
+
     
 }
