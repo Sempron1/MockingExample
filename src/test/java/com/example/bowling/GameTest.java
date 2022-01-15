@@ -31,4 +31,12 @@ class GameTest {
         assertEquals(1,game.roundCounter);
     }
 
+    @Test
+    void rollCountShouldResetAfterEverySecondRoll() {
+        Game game = new Game();
+        game.roll();
+        game.roll();
+        assertEquals(0,game.rollCount);
+    }
+
 }

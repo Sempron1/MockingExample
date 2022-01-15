@@ -18,8 +18,11 @@ public class Game {
 
     public void roll() {
         rollCount++;
-        if(rollCount == 2 )
+        if(rollCount == 2 ){
             roundCounter++;
+            rollCount = 0;
+        }
+
 
 
     }
