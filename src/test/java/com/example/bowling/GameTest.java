@@ -62,4 +62,17 @@ class GameTest {
         assertEquals(2,game.roundPoints[0]);
     }
 
+    @Test
+    void AfterFourRollsRoundTwoShouldHaveStartedAndRoundTwoPointsShouldHaveIncreased() {
+        Game game = new Game();
+        game.roll(9);
+        game.roll(9);
+        game.roll(9);
+        game.roll(9);
+
+        assertEquals(2,game.roundPoints[1]);
+    }
+
+
+
 }
