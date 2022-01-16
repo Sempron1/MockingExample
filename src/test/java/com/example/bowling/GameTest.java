@@ -73,6 +73,13 @@ class GameTest {
         assertEquals(2,game.roundPoints[1]);
     }
 
-
+    @Test
+    void ListShouldSaveEveryScoreFromEveryIndividualRoll() {
+        Game game = new Game();
+        game.roll(9);
+        game.roll(9);
+        assertEquals(1, game.rollPoints.get(0));
+        assertEquals(1, game.rollPoints.get(1));
+    }
 
 }

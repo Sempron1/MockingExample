@@ -12,6 +12,7 @@ public class Game {
     int downedPins = 0;
     int pins = 10;
     int[] roundPoints = new int[9];
+    List<Integer> rollPoints = new ArrayList<>();
 
     public int score() {
         return totalScore;
@@ -28,6 +29,7 @@ public class Game {
         this.downedPins = rand.nextInt((10 - downedPins)) +1;
         pins(this.downedPins);
         roundPoints[roundCounter -1] += this.downedPins;
+        rollPoints.add(this.downedPins);
         pins -= this.downedPins;
         if(rollCount == 2 ){
             roundCounter++;
