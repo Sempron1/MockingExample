@@ -28,7 +28,7 @@ class GameTest {
         Game game = new Game();
         game.roll(3);
         game.roll(3);
-        assertEquals(1,game.roundCounter);
+        assertEquals(2,game.roundCounter);
     }
 
     @Test
@@ -51,7 +51,15 @@ class GameTest {
         Game game = new Game();
         game.roll(9);
         assertEquals(9, game.pins);
+    }
 
+    @Test
+    void AfterTwoRollsAddTheTotalScoreToRoundPointList() {
+        Game game = new Game();
+        game.roll(9);
+        game.roll(9);
+
+        assertEquals(2,game.roundPoints[0]);
     }
 
 }
