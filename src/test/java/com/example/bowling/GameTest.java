@@ -26,17 +26,24 @@ class GameTest {
     @Test
     void roundShouldIncreaseAfterTwoRolls() {
         Game game = new Game();
-        game.roll();
-        game.roll();
+        game.roll(3);
+        game.roll(3);
         assertEquals(1,game.roundCounter);
     }
 
     @Test
     void rollCountShouldResetAfterEverySecondRoll() {
         Game game = new Game();
-        game.roll();
-        game.roll();
+        game.roll(3);
+        game.roll(3);
         assertEquals(0,game.rollCount);
+    }
+
+    @Test
+    void rollMethodShouldKnockDownPinsAndAddToTotalScore() {
+        Game game = new Game();
+        game.roll(1);
+        assertEquals(1,game.score());
     }
 
 }
