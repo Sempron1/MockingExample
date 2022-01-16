@@ -7,6 +7,7 @@ public class Game {
     int totalScore = 0;
     int roundCounter = 0;
     int rollCount = 0;
+    int downedPins = 0;
     int pins = 10;
 
     public int score() {
@@ -17,15 +18,15 @@ public class Game {
         totalScore += roll;
     }
 
-    public void roll(int downPins) {
+    public void roll(int downedPins) {
         Random rand = new Random();
         rollCount++;
         if(rollCount == 2 ){
             roundCounter++;
             rollCount = 0;
         }
-        int downed = rand.nextInt(downPins) +1;
-        pins(downed);
-        pins -= downed;
+        this.downedPins = rand.nextInt((10 - downedPins)) +1;
+        pins(this.downedPins);
+        pins -= this.downedPins;
     }
 }

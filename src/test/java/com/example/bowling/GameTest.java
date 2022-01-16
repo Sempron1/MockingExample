@@ -42,8 +42,16 @@ class GameTest {
     @Test
     void rollMethodShouldKnockDownPinsAndAddToTotalScore() {
         Game game = new Game();
-        game.roll(1);
+        game.roll(9);
         assertEquals(1,game.score());
+    }
+
+    @Test
+    void AfterRollMethodIsCalledTheTotalPinsLeftShouldDecreaseDependingOnKnockedDownPins() {
+        Game game = new Game();
+        game.roll(9);
+        assertEquals(9, game.pins);
+
     }
 
 }
