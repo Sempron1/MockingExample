@@ -2,6 +2,8 @@ package com.example.bowling;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
@@ -89,13 +91,15 @@ class GameTest {
 
 
         game.roll(9);
-
         game.isStrike(10);
         game.roll(9);
         game.roll(9);
+        for (int i = 0; i < game.roundPoints.length; i++) {
+            System.out.println("index: "+ i + " R: " +game.roundPoints[i]);
+        }
 
         assertEquals(3, game.roundPoints[0]);
-        assertEquals(6,game.score());
+        assertEquals(5,game.score());
     }
 
     @Test
@@ -107,7 +111,6 @@ class GameTest {
 
         game.isSpare(0);
         game.roll(9);
-
         game.roll(5);
 
         assertEquals(3,game.roundPoints[0]);
@@ -120,4 +123,29 @@ class GameTest {
         game.isStrike(10);
         assertEquals(2, game.roundCounter);
     }
+
+    @Test
+    void TwoStrikesInARow() {
+        Game game = new Game();
+
+        game.roll(10);
+        game.roll(10);
+        game.roll(9);
+        game.roll(9);
+
+        for (var r : game.rollPoints) {
+            System.out.println(r);
+        }
+
+        for (int i = 0; i < game.roundPoints.length; i++) {
+            System.out.println("index: "+ i + " R: " +game.roundPoints[i]);
+        }
+
+        assertEquals(20,game.roundPoints[0]);
+        assertEquals(12,game.roundPoints[1]);
+
+    }
+
+
+
 }
