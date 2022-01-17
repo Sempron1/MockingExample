@@ -25,33 +25,33 @@ public class Game {
 
     public void roll(int downedPins) {
         Random rand = new Random();
-        addPointsToPreviousRound(strike);
-
         rollCount++;
+        addRollPointsToPreviousRound(spare);
         this.downedPins = rand.nextInt((10 - downedPins)) +1;
         pins(this.downedPins);
         roundPoints[roundCounter -1] += this.downedPins;
         rollPoints.add(this.downedPins);
+        addPointsToPreviousRound(strike);
         pins -= this.downedPins;
         isStrike(this.downedPins);
         if(rollCount == 2 ){
             isSpare(pins);
             strike = false;
-
             roundCounter++;
             rollCount = 0;
         }
+
     }
 
-    private void isSpare(int pins) {
-        if(pins == 0){
-            addRollPointsToPreviousRound();
+    public void isSpare(int pins) {
+        if(pins <=0){
+            spare = true;
             this.pins = 10;
         }
     }
 
     public void isStrike(int downedPins){
-        if(downedPins == 10){
+        if(downedPins == 10 && rollCount%2 != 0){
             strike = true;
             rollPoints.add(0);
             roundCounter++;
@@ -60,17 +60,18 @@ public class Game {
         }
     }
     public void addPointsToPreviousRound(boolean strike){
-        if(strike){
-            roundPoints[roundCounter -3] += roundPoints[roundCounter -2];
+        if(strike && rollCount%2 == 0){
+            roundPoints[roundCounter -2] += roundPoints[roundCounter -1];
             pins(roundPoints[roundCounter -2]);
         }
     }
 
-    public void addRollPointsToPreviousRound() {
-
-            roundPoints[roundCounter -3] += rollPoints.get(rollPoints.size() -2);
-            pins(rollPoints.get(rollPoints.size() -2));
-
+    public void addRollPointsToPreviousRound(boolean spare) {
+        if(spare && rollCount%2 != 0){
+            roundPoints[roundCounter -2] += rollPoints.get(rollPoints.size() -1);
+            pins(rollPoints.get(rollPoints.size() -1));
+          this.spare = false;
+        }
 
     }
 }
