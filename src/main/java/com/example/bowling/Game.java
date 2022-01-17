@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Game {
-
+    boolean strike = false;
     int totalScore = 0;
     int roundCounter = 1;
     int rollCount = 0;
@@ -38,7 +38,15 @@ public class Game {
         }
     }
 
-    public boolean isStrike(int downedPins){
-        return downedPins == 10;
+    public void isStrike(int downedPins){
+        if(downedPins == 10){
+            addPointsToPreviousRound();
+        }
     }
+    public void addPointsToPreviousRound(){
+        roundPoints[roundCounter -3] += roundPoints[roundCounter -2];
+        pins(roundPoints[roundCounter -2]);
+
+    }
+
 }

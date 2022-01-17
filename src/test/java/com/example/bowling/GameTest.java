@@ -82,12 +82,20 @@ class GameTest {
         assertEquals(1, game.rollPoints.get(1));
     }
 
-    @Test
-    void WhenYouHitAllPinsBooleanShouldTurnTrue() {
-        Game game = new Game();
-        var result = game.isStrike(10);
 
-        assertTrue(result);
+    @Test
+    void WhenYouGetAStrikeNextRoundPointsShouldGoToThePreviousRoundPoints() {
+        Game game = new Game();
+
+        game.roll(9);
+        game.roll(9);
+
+        game.roll(9);
+        game.roll(9);
+        game.addPointsToPreviousRound();
+
+        assertEquals(4, game.roundPoints[0]);
+        assertEquals(6,game.score());
     }
 
 }
