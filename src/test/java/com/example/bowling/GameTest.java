@@ -98,4 +98,16 @@ class GameTest {
         assertEquals(6,game.score());
     }
 
+    @Test
+    void WhenYouGetASpareNextRollPointsShouldGoToThePreviousRoundPoints() {
+        Game game = new Game();
+        game.roll(9);
+        game.roll(9);
+        game.roll(9);
+        game.roll(9);
+        game.addRollPointsToPreviousRound();
+        assertEquals(3,game.roundPoints[0]);
+        assertEquals(5,game.score());
+    }
+
 }

@@ -27,14 +27,23 @@ public class Game {
         rollCount++;
 
         this.downedPins = rand.nextInt((10 - downedPins)) +1;
+       // System.out.println("test:" + (this.downedPins = rand.nextInt((10 - 8)) +1));
         pins(this.downedPins);
         roundPoints[roundCounter -1] += this.downedPins;
         rollPoints.add(this.downedPins);
         isStrike(this.downedPins);
+
         pins -= this.downedPins;
         if(rollCount == 2 ){
+            isSpare(pins);
             roundCounter++;
             rollCount = 0;
+        }
+    }
+
+    private void isSpare(int pins) {
+        if(pins == 0){
+            addRollPointsToPreviousRound();
         }
     }
 
@@ -49,4 +58,8 @@ public class Game {
 
     }
 
+    public void addRollPointsToPreviousRound() {
+        roundPoints[roundCounter -3] += rollPoints.get(rollPoints.size() -2);
+        pins(rollPoints.get(rollPoints.size() -2));
+    }
 }
