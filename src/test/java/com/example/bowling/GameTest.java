@@ -92,7 +92,7 @@ class GameTest {
 
         game.roll(9);
         game.roll(9);
-        game.addPointsToPreviousRound();
+        game.addPointsToPreviousRound(true);
 
         assertEquals(4, game.roundPoints[0]);
         assertEquals(6,game.score());
@@ -110,4 +110,10 @@ class GameTest {
         assertEquals(5,game.score());
     }
 
+    @Test
+    void WhenThePlayerGetsAStrikeNextRoundShouldImmediatelyStart() {
+        Game game = new Game();
+        game.isStrike(10);
+        assertEquals(2, game.roundCounter);
+    }
 }

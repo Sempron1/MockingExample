@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class Game {
     boolean strike = false;
+    boolean spare = false;
     int totalScore = 0;
     int roundCounter = 1;
     int rollCount = 0;
@@ -24,18 +25,19 @@ public class Game {
 
     public void roll(int downedPins) {
         Random rand = new Random();
-        rollCount++;
+        addPointsToPreviousRound(strike);
 
+        rollCount++;
         this.downedPins = rand.nextInt((10 - downedPins)) +1;
-       // System.out.println("test:" + (this.downedPins = rand.nextInt((10 - 8)) +1));
         pins(this.downedPins);
         roundPoints[roundCounter -1] += this.downedPins;
         rollPoints.add(this.downedPins);
-        isStrike(this.downedPins);
-
         pins -= this.downedPins;
+        isStrike(this.downedPins);
         if(rollCount == 2 ){
             isSpare(pins);
+            strike = false;
+
             roundCounter++;
             rollCount = 0;
         }
@@ -44,22 +46,31 @@ public class Game {
     private void isSpare(int pins) {
         if(pins == 0){
             addRollPointsToPreviousRound();
+            this.pins = 10;
         }
     }
 
     public void isStrike(int downedPins){
         if(downedPins == 10){
-            addPointsToPreviousRound();
+            strike = true;
+            rollPoints.add(0);
+            roundCounter++;
+            rollCount = 0;
+            pins = 10;
         }
     }
-    public void addPointsToPreviousRound(){
-        roundPoints[roundCounter -3] += roundPoints[roundCounter -2];
-        pins(roundPoints[roundCounter -2]);
-
+    public void addPointsToPreviousRound(boolean strike){
+        if(strike){
+            roundPoints[roundCounter -3] += roundPoints[roundCounter -2];
+            pins(roundPoints[roundCounter -2]);
+        }
     }
 
     public void addRollPointsToPreviousRound() {
-        roundPoints[roundCounter -3] += rollPoints.get(rollPoints.size() -2);
-        pins(rollPoints.get(rollPoints.size() -2));
+
+            roundPoints[roundCounter -3] += rollPoints.get(rollPoints.size() -2);
+            pins(rollPoints.get(rollPoints.size() -2));
+
+
     }
 }
