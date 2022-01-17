@@ -30,10 +30,15 @@ public class Game {
         pins(this.downedPins);
         roundPoints[roundCounter -1] += this.downedPins;
         rollPoints.add(this.downedPins);
+        isStrike(this.downedPins);
         pins -= this.downedPins;
         if(rollCount == 2 ){
             roundCounter++;
             rollCount = 0;
         }
+    }
+
+    public boolean isStrike(int downedPins){
+        return downedPins == 10;
     }
 }
