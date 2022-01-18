@@ -90,16 +90,13 @@ class GameTest {
         Game game = new Game();
 
 
-        game.roll(1);
-        game.isStrike(10);
-        game.roll(1);
-        game.roll(1);
-        for (int i = 0; i < game.roundPoints.length; i++) {
-            System.out.println("index: "+ i + " R: " +game.roundPoints[i]);
-        }
+        game.roll(10);
 
-        assertEquals(3, game.roundPoints[0]);
-        assertEquals(5,game.score());
+        game.roll(1);
+        game.roll(1);
+
+        assertEquals(12, game.roundPoints[0]);
+        assertEquals(14,game.score());
     }
 
     @Test
@@ -118,8 +115,8 @@ class GameTest {
     @Test
     void WhenThePlayerGetsAStrikeNextRoundShouldImmediatelyStart() {
         Game game = new Game();
-        game.roll(1);
-        game.isStrike(10);
+        game.roll(10);
+
         assertEquals(2, game.roundCounter);
     }
 
@@ -132,13 +129,6 @@ class GameTest {
         game.roll(1);
         game.roll(1);
 
-        for (var r : game.rollPoints) {
-            System.out.println(r);
-        }
-
-        for (int i = 0; i < game.roundPoints.length; i++) {
-            System.out.println("index: "+ i + " R: " +game.roundPoints[i]);
-        }
         assertEquals(20,game.roundPoints[0]);
         assertEquals(12,game.roundPoints[1]);
     }
@@ -149,7 +139,11 @@ class GameTest {
 
         game.roll(5);
         game.roll(5);
-
+        game.roll(5);
+        game.roll(5);
+        game.roll(4);
+        assertEquals(15, game.roundPoints[0]);
+        assertEquals(14, game.roundPoints[1]);
 
     }
 
