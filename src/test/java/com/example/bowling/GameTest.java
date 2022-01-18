@@ -44,22 +44,22 @@ class GameTest {
     @Test
     void rollMethodShouldKnockDownPinsAndAddToTotalScore() {
         Game game = new Game();
-        game.roll(9);
+        game.roll(1);
         assertEquals(1,game.score());
     }
 
     @Test
     void AfterRollMethodIsCalledTheTotalPinsLeftShouldDecreaseDependingOnKnockedDownPins() {
         Game game = new Game();
-        game.roll(9);
+        game.roll(1);
         assertEquals(9, game.pins);
     }
 
     @Test
     void AfterTwoRollsAddTheTotalScoreToRoundPointList() {
         Game game = new Game();
-        game.roll(9);
-        game.roll(9);
+        game.roll(1);
+        game.roll(1);
 
         assertEquals(2,game.roundPoints[0]);
     }
@@ -67,10 +67,10 @@ class GameTest {
     @Test
     void AfterFourRollsRoundTwoShouldHaveStartedAndRoundTwoPointsShouldHaveIncreased() {
         Game game = new Game();
-        game.roll(9);
-        game.roll(9);
-        game.roll(9);
-        game.roll(9);
+        game.roll(1);
+        game.roll(1);
+        game.roll(1);
+        game.roll(1);
 
         assertEquals(2,game.roundPoints[1]);
     }
@@ -78,8 +78,8 @@ class GameTest {
     @Test
     void ListShouldSaveEveryScoreFromEveryIndividualRoll() {
         Game game = new Game();
-        game.roll(9);
-        game.roll(9);
+        game.roll(1);
+        game.roll(1);
         assertEquals(1, game.rollPoints.get(0));
         assertEquals(1, game.rollPoints.get(1));
     }
@@ -90,10 +90,10 @@ class GameTest {
         Game game = new Game();
 
 
-        game.roll(9);
+        game.roll(1);
         game.isStrike(10);
-        game.roll(9);
-        game.roll(9);
+        game.roll(1);
+        game.roll(1);
         for (int i = 0; i < game.roundPoints.length; i++) {
             System.out.println("index: "+ i + " R: " +game.roundPoints[i]);
         }
@@ -106,11 +106,11 @@ class GameTest {
     void WhenYouGetASpareNextRollPointsShouldGoToThePreviousRoundPoints() {
         Game game = new Game();
 
-        game.roll(9);
-        game.roll(9);
+        game.roll(1);
+        game.roll(1);
 
         game.isSpare(0);
-        game.roll(9);
+        game.roll(1);
         game.roll(5);
 
         assertEquals(3,game.roundPoints[0]);
@@ -119,7 +119,7 @@ class GameTest {
     @Test
     void WhenThePlayerGetsAStrikeNextRoundShouldImmediatelyStart() {
         Game game = new Game();
-        game.roll(9);
+        game.roll(1);
         game.isStrike(10);
         assertEquals(2, game.roundCounter);
     }
@@ -130,8 +130,8 @@ class GameTest {
 
         game.roll(10);
         game.roll(10);
-        game.roll(9);
-        game.roll(9);
+        game.roll(1);
+        game.roll(1);
 
         for (var r : game.rollPoints) {
             System.out.println(r);
@@ -140,11 +140,11 @@ class GameTest {
         for (int i = 0; i < game.roundPoints.length; i++) {
             System.out.println("index: "+ i + " R: " +game.roundPoints[i]);
         }
-
         assertEquals(20,game.roundPoints[0]);
         assertEquals(12,game.roundPoints[1]);
-
     }
+
+
 
 
 

@@ -24,10 +24,9 @@ public class Game {
     }
 
     public void roll(int downedPins) {
-        Random rand = new Random();
         rollCount++;
         addRollPointsToPreviousRound(spare);
-        randomMethod(downedPins, rand);
+        this.downedPins = downedPins;
         pins(this.downedPins);
         roundPoints[roundCounter -1] += this.downedPins;
         rollPoints.add(this.downedPins);
@@ -43,13 +42,9 @@ public class Game {
 
     }
 
-    private void randomMethod(int downedPins, Random rand) {
-        if(downedPins == 10){
-            this.downedPins = 10;
-        }else{
-            this.downedPins = rand.nextInt((10 - downedPins)) +1;
-        }
-
+    public int randomMethod(int downedPins) {
+        Random rand = new Random();
+        return this.downedPins = rand.nextInt((10 - downedPins)) +1;
     }
 
     public void isSpare(int pins) {
@@ -70,7 +65,6 @@ public class Game {
     }
     public void addPointsToPreviousRound(boolean strike){
         if(strike && rollCount%2 == 0 ){
-
             roundPoints[roundCounter -2] += roundPoints[roundCounter -1];
             pins(roundPoints[roundCounter -1]);
         }
