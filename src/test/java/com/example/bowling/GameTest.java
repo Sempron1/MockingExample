@@ -106,14 +106,13 @@ class GameTest {
     void WhenYouGetASpareNextRollPointsShouldGoToThePreviousRoundPoints() {
         Game game = new Game();
 
-        game.roll(1);
-        game.roll(1);
-
-        game.isSpare(0);
+        game.roll(5);
+        game.roll(5);
         game.roll(1);
         game.roll(5);
 
-        assertEquals(3,game.roundPoints[0]);
+
+        assertEquals(11,game.roundPoints[0]);
     }
 
     @Test
@@ -144,7 +143,15 @@ class GameTest {
         assertEquals(12,game.roundPoints[1]);
     }
 
+    @Test
+    void TwoSparesInARow() {
+        Game game = new Game();
 
+        game.roll(5);
+        game.roll(5);
+
+
+    }
 
 
 

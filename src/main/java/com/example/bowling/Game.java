@@ -25,11 +25,11 @@ public class Game {
 
     public void roll(int downedPins) {
         rollCount++;
-        addRollPointsToPreviousRound(spare);
         this.downedPins = downedPins;
         pins(this.downedPins);
         roundPoints[roundCounter -1] += this.downedPins;
         rollPoints.add(this.downedPins);
+        addRollPointsToPreviousRound(spare);
         addPointsToPreviousRound(strike);
         pins -= this.downedPins;
         isStrike(this.downedPins);
