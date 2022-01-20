@@ -7,6 +7,7 @@ import java.util.Random;
 public class Game {
     boolean strike = false;
     boolean spare = false;
+    boolean finish = false;
     int totalScore = 0;
     int roundCounter = 1;
     int rollCount = 0;
@@ -42,10 +43,17 @@ public class Game {
 
     }
 
+
+
     public void bowling(int downedPins) {
         Random rand = new Random();
+        finish();
         int bowlingThrow = this.downedPins = rand.nextInt((10 - downedPins));
-        roll(bowlingThrow);
+        if(roundCounter == 10)
+            finish = true;
+        else
+            roll(bowlingThrow);
+
     }
 
     public void isSpare(int pins) {
@@ -82,5 +90,12 @@ public class Game {
           this.spare = false;
         }
 
+    }
+
+    public void finish() {
+        if(finish){
+            System.out.println("Game Finished!");
+            System.out.println("Your score is: " + score());
+        }
     }
 }
