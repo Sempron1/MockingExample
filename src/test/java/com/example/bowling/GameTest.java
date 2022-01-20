@@ -158,6 +158,23 @@ class GameTest {
 
     }
 
+    @Test
+    void ThreeStrikesInARow() {
+        Game game = new Game();
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+
+        for (var r : game.rollPoints) {
+            System.out.println(r);
+        }
+        assertEquals(30,game.roundPoints[0]);
+    }
+
+
+
+
+
 
 
 }

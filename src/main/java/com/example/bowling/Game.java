@@ -9,11 +9,12 @@ public class Game {
     boolean spare = false;
     boolean finish = false;
     int totalScore = 0;
+    static int bonus = 0;
     int roundCounter = 1;
     int rollCount = 0;
     int downedPins = 0;
     int pins = 10;
-    int[] roundPoints = new int[9];
+    int[] roundPoints = new int[13];
     List<Integer> rollPoints = new ArrayList<>();
 
     public int score() {
@@ -31,9 +32,18 @@ public class Game {
         roundPoints[roundCounter -1] += this.downedPins;
         rollPoints.add(this.downedPins);
         addRollPointsToPreviousRound(spare);
-        addPointsToPreviousRound(strike);
+        addPointsToPreviousRoundStrike(strike);
         pins -= this.downedPins;
         isStrike(this.downedPins);
+
+        if(roundCounter > 10 && strike){
+            System.out.println(roundCounter);
+            System.out.println(bonus);
+            isSpare(pins);
+            rollCount = 0;
+            bonus++;
+        }
+
         if(rollCount == 2 ){
             isSpare(pins);
             strike = false;
@@ -44,15 +54,11 @@ public class Game {
     }
 
 
-
     public void bowling(int downedPins) {
         Random rand = new Random();
-        finish();
+        finish(true);
         int bowlingThrow = this.downedPins = rand.nextInt((10 - downedPins));
-        if(roundCounter == 10)
-            finish = true;
-        else
-            roll(bowlingThrow);
+        roll(bowlingThrow);
 
     }
 
@@ -83,6 +89,16 @@ public class Game {
         }
     }
 
+    public void addPointsToPreviousRoundStrike(boolean strike){
+        if(rollPoints.size() -1 >= 3){
+            if(rollPoints.get(rollPoints.size() -3) == 10){
+                int previousRolls = rollPoints.get(rollPoints.size() -3) +  rollPoints.get(rollPoints.size() -1);
+                roundPoints[roundCounter -3] += previousRolls;
+            }
+        }
+    }
+
+
     public void addRollPointsToPreviousRound(boolean spare) {
         if(spare && rollCount%2 != 0){
             roundPoints[roundCounter -2] += rollPoints.get(rollPoints.size() -1);
@@ -92,7 +108,7 @@ public class Game {
 
     }
 
-    public void finish() {
+    public void finish(boolean finish) {
         if(finish){
             System.out.println("Game Finished!");
             System.out.println("Your score is: " + score());
