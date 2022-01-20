@@ -91,11 +91,14 @@ class GameTest {
 
 
         game.roll(10);
-
         game.roll(1);
         game.roll(1);
 
-        assertEquals(12, game.roundPoints[0]);
+        for (var r : game.rollPoints) {
+            System.out.println(r);
+        }
+
+        assertEquals(12, game.rollPoints.get(0));
         assertEquals(14,game.score());
     }
 
@@ -129,8 +132,8 @@ class GameTest {
         game.roll(1);
         game.roll(1);
 
-        assertEquals(20,game.roundPoints[0]);
-        assertEquals(12,game.roundPoints[1]);
+        assertEquals(21,game.rollPoints.get(0));
+        assertEquals(12,game.rollPoints.get(1));
     }
 
     @Test
@@ -154,7 +157,6 @@ class GameTest {
         game.totalScore = 1;
         game.bowling(9);
         game.bowling(9);
-        assertTrue(game.finish);
 
     }
 
@@ -164,8 +166,11 @@ class GameTest {
         game.roll(10);
         game.roll(10);
         game.roll(10);
+        for (var r : game.rollPoints) {
+            System.out.println(r);
+        }
 
-        assertEquals(30,game.roundPoints[0]);
+        assertEquals(30,game.rollPoints.get(0));
         assertEquals(50,game.score());
     }
 

@@ -7,7 +7,6 @@ import java.util.Random;
 public class Game {
     boolean strike = false;
     boolean spare = false;
-    boolean finish = false;
     int totalScore = 0;
     static int bonus = 0;
     int roundCounter = 1;
@@ -18,7 +17,7 @@ public class Game {
     List<Integer> rollPoints = new ArrayList<>();
 
     public int score() {
-        if(roundCounter == 10)
+        if(roundCounter > 10)
             return totalScore -=20;
         else
             return totalScore;
@@ -32,13 +31,13 @@ public class Game {
         rollCount++;
         this.downedPins = downedPins;
         pins(this.downedPins);
-        roundPoints[roundCounter -1] += this.downedPins;
+        roundPoints[roundCounter-1] += this.downedPins;
         rollPoints.add(this.downedPins);
-        addRollPointsToPreviousRound(spare);
         addPointsToPreviousRoundStrike(strike);
+        addRollPointsToPreviousRound(spare);
         pins -= this.downedPins;
         isStrike(this.downedPins);
-
+       // addPointsToPreviousRoundStrike(strike);
         if(roundCounter > 10 && strike){
             System.out.println(roundCounter);
             System.out.println(bonus);
@@ -59,7 +58,7 @@ public class Game {
 
     public void bowling(int downedPins) {
         Random rand = new Random();
-        finish(true);
+        finish();
         int bowlingThrow = this.downedPins = rand.nextInt((10 - downedPins));
         roll(bowlingThrow);
 
@@ -75,7 +74,7 @@ public class Game {
     public void isStrike(int downedPins){
         if(downedPins == 10 && rollCount%2 != 0){
             strike = true;
-            rollPoints.add(0);
+           // rollPoints.add(0);
             roundCounter++;
             rollCount = 0;
             pins = 10;
@@ -93,10 +92,12 @@ public class Game {
     }
 
     public void addPointsToPreviousRoundStrike(boolean strike){
-        if(rollPoints.size() -1 >= 3){
+
+        if(rollPoints.size() >= 3 && strike){
             if(rollPoints.get(rollPoints.size() -3) == 10){
-                int previousRolls = rollPoints.get(rollPoints.size() -3) +  rollPoints.get(rollPoints.size() -1);
-                roundPoints[roundCounter -3] += previousRolls;
+                int previousRolls = rollPoints.get(rollPoints.size() -2) +  rollPoints.get(rollPoints.size() -1);
+                var test = rollPoints.get(rollPoints.size() -3) + previousRolls;
+                rollPoints.set(rollPoints.size()-3,test);
                 pins(previousRolls);
             }
         }
@@ -112,8 +113,8 @@ public class Game {
 
     }
 
-    public void finish(boolean finish) {
-        if(finish){
+    public void finish() {
+        if(roundCounter == 10){
             System.out.println("Game Finished!");
             System.out.println("Your score is: " + score());
         }
