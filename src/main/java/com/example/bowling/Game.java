@@ -39,8 +39,6 @@ public class Game {
         isStrike(this.downedPins);
        // addPointsToPreviousRoundStrike(strike);
         if(roundCounter > 10 && strike){
-            System.out.println(roundCounter);
-            System.out.println(bonus);
             isSpare(pins);
             rollCount = 0;
             bonus++;

@@ -148,8 +148,6 @@ class GameTest {
 
     }
 
-
-
     @Test
     void ThreeStrikesInARow() {
         Game game = new Game();
@@ -162,7 +160,7 @@ class GameTest {
     }
 
     @Test
-    void TenStrikesInARowShouldBe300Points() {
+    void TenStrikesInARowPlusBonusRollsShouldBe300Points() {
         Game game = new Game();
         game.roll(10);
         game.roll(10);
