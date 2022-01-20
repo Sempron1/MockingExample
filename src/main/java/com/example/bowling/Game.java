@@ -79,16 +79,6 @@ public class Game {
             pins = 10;
         }
     }
-    public void addPointsToPreviousRound(boolean strike){
-        if(strike && rollCount%2 == 0 ){
-            roundPoints[roundCounter -2] += roundPoints[roundCounter -1];
-            pins(roundPoints[roundCounter -1]);
-        }
-        else if(strike && rollPoints.get(rollPoints.size() -1) == 10 &&rollPoints.get(rollPoints.size() -2) == 0 ){
-            roundPoints[roundCounter -2] += rollPoints.get(rollPoints.size() -1);
-            pins(rollPoints.get(rollPoints.size() -1));
-        }
-    }
 
     public void addPointsToPreviousRoundStrike(boolean strike){
 
