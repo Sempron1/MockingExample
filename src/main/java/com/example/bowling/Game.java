@@ -14,11 +14,14 @@ public class Game {
     int rollCount = 0;
     int downedPins = 0;
     int pins = 10;
-    int[] roundPoints = new int[13];
+    int[] roundPoints = new int[12];
     List<Integer> rollPoints = new ArrayList<>();
 
     public int score() {
-        return totalScore;
+        if(roundCounter == 10)
+            return totalScore -=20;
+        else
+            return totalScore;
     }
 
     public void pins(int roll) {
@@ -94,6 +97,7 @@ public class Game {
             if(rollPoints.get(rollPoints.size() -3) == 10){
                 int previousRolls = rollPoints.get(rollPoints.size() -3) +  rollPoints.get(rollPoints.size() -1);
                 roundPoints[roundCounter -3] += previousRolls;
+                pins(previousRolls);
             }
         }
     }

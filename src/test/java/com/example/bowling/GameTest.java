@@ -165,11 +165,31 @@ class GameTest {
         game.roll(10);
         game.roll(10);
 
-        for (var r : game.rollPoints) {
-            System.out.println(r);
-        }
         assertEquals(30,game.roundPoints[0]);
+        assertEquals(50,game.score());
     }
+
+    @Test
+    void TenStrikesInARowShouldBe300Points() {
+        Game game = new Game();
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+
+
+        assertEquals(300,game.score());
+    }
+
+
 
 
 
