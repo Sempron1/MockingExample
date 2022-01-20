@@ -2,8 +2,6 @@ package com.example.bowling;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Random;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
@@ -158,9 +156,6 @@ class GameTest {
         game.roll(10);
         game.roll(10);
         game.roll(10);
-        for (var r : game.rollPoints) {
-            System.out.println(r);
-        }
 
         assertEquals(30,game.rollPoints.get(0));
         assertEquals(50,game.score());

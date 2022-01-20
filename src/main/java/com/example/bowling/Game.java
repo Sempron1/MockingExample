@@ -74,7 +74,6 @@ public class Game {
     public void isStrike(int downedPins){
         if(downedPins == 10 && rollCount%2 != 0){
             strike = true;
-           // rollPoints.add(0);
             roundCounter++;
             rollCount = 0;
             pins = 10;
