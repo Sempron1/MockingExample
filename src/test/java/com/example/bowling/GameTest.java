@@ -150,15 +150,7 @@ class GameTest {
 
     }
 
-    @Test
-    void AtRound10GamesFinishAndDisplayScore() {
-        Game game = new Game();
-        game.roundCounter = 10;
-        game.totalScore = 1;
-        game.bowling(9);
-        game.bowling(9);
 
-    }
 
     @Test
     void ThreeStrikesInARow() {
