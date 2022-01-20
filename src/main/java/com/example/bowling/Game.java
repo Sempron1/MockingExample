@@ -95,8 +95,8 @@ public class Game {
         if(rollPoints.size() >= 3 && strike){
             if(rollPoints.get(rollPoints.size() -3) == 10){
                 int previousRolls = rollPoints.get(rollPoints.size() -2) +  rollPoints.get(rollPoints.size() -1);
-                var test = rollPoints.get(rollPoints.size() -3) + previousRolls;
-                rollPoints.set(rollPoints.size()-3,test);
+                int newScore = rollPoints.get(rollPoints.size() -3) + previousRolls;
+                rollPoints.set(rollPoints.size()-3,newScore);
                 pins(previousRolls);
             }
         }
