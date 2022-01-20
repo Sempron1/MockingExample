@@ -42,9 +42,10 @@ public class Game {
 
     }
 
-    public int randomMethod(int downedPins) {
+    public void bowling(int downedPins) {
         Random rand = new Random();
-        return this.downedPins = rand.nextInt((10 - downedPins)) +1;
+        int bowlingThrow = this.downedPins = rand.nextInt((10 - downedPins));
+        roll(bowlingThrow);
     }
 
     public void isSpare(int pins) {
