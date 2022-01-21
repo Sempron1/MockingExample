@@ -13,7 +13,6 @@ public class Game {
     int rollCount = 0;
     int downedPins = 0;
     int pins = 10;
-    int[] roundPoints = new int[12];
     List<Integer> rollPoints = new ArrayList<>();
 
     public int score() {
@@ -32,9 +31,7 @@ public class Game {
         rollCount++;
         this.downedPins = downedPins;
         pins(this.downedPins);
-        roundPoints[roundCounter-1] += this.downedPins;
         rollPoints.add(this.downedPins);
-
         addPointsToPreviousRoundStrike(strike);
         addRollPointsToPreviousRoundSpare(spare);
         pins -= this.downedPins;

@@ -53,25 +53,6 @@ class GameTest {
         assertEquals(9, game.pins);
     }
 
-    @Test
-    void AfterTwoRollsAddTheTotalScoreToRoundPointList() {
-        Game game = new Game();
-        game.roll(1);
-        game.roll(1);
-
-        assertEquals(2, game.roundPoints[0]);
-    }
-
-    @Test
-    void AfterFourRollsRoundTwoShouldHaveStartedAndRoundTwoPointsShouldHaveIncreased() {
-        Game game = new Game();
-        game.roll(1);
-        game.roll(1);
-        game.roll(1);
-        game.roll(1);
-
-        assertEquals(2, game.roundPoints[1]);
-    }
 
     @Test
     void ListShouldSaveEveryScoreFromEveryIndividualRoll() {
