@@ -181,42 +181,13 @@ class GameTest {
     void TenSparesInaRowPlusBonusShouldBeXXXPoints() {
         Game game = new Game();
 
-        game.roll(5);
-        game.roll(5);
-
-        game.roll(5);
-        game.roll(5);
-
-        game.roll(5);
-        game.roll(5);
-
-        game.roll(5);
-        game.roll(5);
-
-        game.roll(5);
-        game.roll(5);
-
-        game.roll(5);
-        game.roll(5);
-
-        game.roll(5);
-        game.roll(5);
-
-        game.roll(5);
-        game.roll(5);
-
-        game.roll(5);
-        game.roll(5);
-
-        game.roll(5);
-        game.roll(5);
-
-        game.roll(5);
-
+        for (int i = 0; i < 21; i++) {
+            game.roll(5);
+        }
         assertEquals(150, game.score());
-
-
     }
+
+
 
 
 }

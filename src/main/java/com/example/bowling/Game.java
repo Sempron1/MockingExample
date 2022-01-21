@@ -37,7 +37,6 @@ public class Game {
         addRollPointsToPreviousRoundSpare(spare);
         pins -= this.downedPins;
         isStrike(this.downedPins);
-       // addPointsToPreviousRoundStrike(strike);
         if(roundCounter > 10 && strike){
             rollCount = 0;
             bonus++;
