@@ -33,7 +33,6 @@ public class Game {
         pins(this.downedPins);
         roundPoints[roundCounter-1] += this.downedPins;
         rollPoints.add(this.downedPins);
-
         addPointsToPreviousRoundStrike(strike);
         addRollPointsToPreviousRoundSpare(spare);
         pins -= this.downedPins;
@@ -89,16 +88,6 @@ public class Game {
                 pins(previousRolls);
             }
         }
-    }
-
-
-    public void addRollPointsToPreviousRound(boolean spare) {
-        if(spare && rollCount%2 != 0){
-            roundPoints[roundCounter -2] += rollPoints.get(rollPoints.size() -1);
-            pins(rollPoints.get(rollPoints.size() -1));
-          this.spare = false;
-        }
-
     }
 
     public void addRollPointsToPreviousRoundSpare(boolean spare) {
