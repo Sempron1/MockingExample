@@ -138,10 +138,12 @@ class GameTest {
     void TwoSparesInARow() {
         Game game = new Game();
 
-        for (int i = 0; i < 2; i++) {
-            game.roll(5);
-            game.roll(5);
-        }
+        game.roll(5);
+        game.roll(5);
+        game.roll(5);
+        game.roll(5);
+
+
         assertEquals(25, game.score());
 
     }
@@ -187,7 +189,15 @@ class GameTest {
         assertEquals(150, game.score());
     }
 
+    @Test
+    void noSpareShouldNotAddNextScoreToPreviousRound() {
+        Game game = new Game();
+        game.roll(2);
+        game.roll(3);
+        game.roll(2);
+        game.roll(3);
+        assertEquals(10,game.score());
 
-
+    }
 
 }
