@@ -28,9 +28,7 @@ public class Game {
     }
 
     public void roll(int downedPins) {
-        if(roundCounter == 11 && !strike && !spare ){
-            finish();
-        }
+
         rollCount++;
         this.downedPins = downedPins;
         pins(this.downedPins);
@@ -58,6 +56,7 @@ public class Game {
     public void bowling() {
         Random rand = new Random();
         int bowlingThrow = downedPins = rand.nextInt((10 - downedPins));
+        finish();
         roll(bowlingThrow);
 
     }
@@ -92,7 +91,7 @@ public class Game {
     public void addRollPointsToPreviousRoundSpare(boolean spare) {
         if(roundCounter == 11 && spare){
            totalScore -= rollPoints.get(rollPoints.size() - 1);
-            finish();
+            finishMessage();
         }
         if(spare && rollCount%2 != 0){
             pins(rollPoints.get(rollPoints.size() -1));
@@ -101,7 +100,16 @@ public class Game {
 
     }
 
-    public void finish() {
+    public void finish(){
+        if(roundCounter == 12 && strike ){
+            finishMessage();
+        }
+        else if(roundCounter == 11 && !strike && !spare ){
+            finishMessage();
+        }
+    }
+
+    public void finishMessage() {
             System.out.println("Game Finished!");
             System.out.println("Your score is: " + score());
     }

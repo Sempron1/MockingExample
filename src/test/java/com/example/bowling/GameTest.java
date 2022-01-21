@@ -171,7 +171,6 @@ class GameTest {
         game.roll(10);
         game.roll(10);
         game.roll(10);
-        System.out.println(game.strike);
 
         assertEquals(300, game.score());
     }
