@@ -17,7 +17,7 @@ public class Game {
     List<Integer> rollPoints = new ArrayList<>();
 
     public int score() {
-        if(roundCounter > 10)
+        if(roundCounter > 10 && strike)
             return totalScore -=20;
         else
             return totalScore;
@@ -33,16 +33,18 @@ public class Game {
         pins(this.downedPins);
         roundPoints[roundCounter-1] += this.downedPins;
         rollPoints.add(this.downedPins);
+
         addPointsToPreviousRoundStrike(strike);
-        addRollPointsToPreviousRound(spare);
+        addRollPointsToPreviousRoundSpare(spare);
         pins -= this.downedPins;
         isStrike(this.downedPins);
        // addPointsToPreviousRoundStrike(strike);
         if(roundCounter > 10 && strike){
-            isSpare(pins);
             rollCount = 0;
             bonus++;
         }
+
+
 
         if(rollCount == 2 ){
             isSpare(pins);
@@ -54,10 +56,10 @@ public class Game {
     }
 
 
-    public void bowling(int downedPins) {
+    public void bowling() {
         Random rand = new Random();
         finish();
-        int bowlingThrow = this.downedPins = rand.nextInt((10 - downedPins));
+        int bowlingThrow = downedPins = rand.nextInt((10 - downedPins));
         roll(bowlingThrow);
 
     }
@@ -79,7 +81,6 @@ public class Game {
     }
 
     public void addPointsToPreviousRoundStrike(boolean strike){
-
         if(rollPoints.size() >= 3 && strike){
             if(rollPoints.get(rollPoints.size() -3) == 10){
                 int previousRolls = rollPoints.get(rollPoints.size() -2) +  rollPoints.get(rollPoints.size() -1);
@@ -100,8 +101,19 @@ public class Game {
 
     }
 
+    public void addRollPointsToPreviousRoundSpare(boolean spare) {
+        if(roundCounter == 11 && spare){
+            totalScore -= rollPoints.get(rollPoints.size() - 1);
+        }
+        if(spare && rollCount%2 != 0){
+            pins(rollPoints.get(rollPoints.size() -1));
+            this.spare = false;
+        }
+
+    }
+
     public void finish() {
-        if(roundCounter == 10){
+        if(roundCounter == 12){
             System.out.println("Game Finished!");
             System.out.println("Your score is: " + score());
         }
