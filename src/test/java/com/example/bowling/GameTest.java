@@ -92,9 +92,6 @@ class GameTest {
         game.roll(1);
         game.roll(1);
 
-        for (var r : game.rollPoints) {
-            System.out.println(r);
-        }
 
         assertEquals(12, game.rollPoints.get(0));
         assertEquals(14, game.score());
@@ -174,7 +171,7 @@ class GameTest {
         game.roll(10);
         game.roll(10);
         game.roll(10);
-
+        System.out.println(game.strike);
 
         assertEquals(300, game.score());
     }

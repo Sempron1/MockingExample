@@ -55,7 +55,6 @@ public class Game {
 
     }
 
-
     public void bowling() {
         Random rand = new Random();
         int bowlingThrow = downedPins = rand.nextInt((10 - downedPins));
