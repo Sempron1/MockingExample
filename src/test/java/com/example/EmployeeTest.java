@@ -2,7 +2,9 @@ package com.example;
 
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.contains;
 
 class EmployeeTest {
 
@@ -33,6 +35,15 @@ class EmployeeTest {
     void setPaidAndGetPaidWorksCorrectly() {
         employee.setPaid(true);
         assertTrue(employee.isPaid());
+    }
+
+    @Test
+    void toStringMethodReturnsCorrectString() {
+
+        var value = "Employee [id=" + employee.getId() + ", salary=" + employee.getSalary() + "]";
+
+        assertEquals(value, employee.toString());
+
     }
 
 }
