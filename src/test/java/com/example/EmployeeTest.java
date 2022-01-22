@@ -21,6 +21,12 @@ class EmployeeTest {
         assertEquals(10,employee.getSalary());
     }
 
+    @Test
+    void setIdAndGetIdWorksCorrectly() {
 
+        employee.setId("2");
+        assertEquals("2",employee.getId());
+
+    }
 
 }
