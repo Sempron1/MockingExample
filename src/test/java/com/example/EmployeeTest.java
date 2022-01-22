@@ -29,4 +29,10 @@ class EmployeeTest {
 
     }
 
+    @Test
+    void setPaidAndGetPaidWorksCorrectly() {
+        employee.setPaid(true);
+        assertTrue(employee.isPaid());
+    }
+
 }
