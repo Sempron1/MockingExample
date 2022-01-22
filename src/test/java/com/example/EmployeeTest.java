@@ -14,4 +14,13 @@ class EmployeeTest {
         assertEquals("1",employee.getId());
     }
 
+    @Test
+    void setSalaryAndGetSalaryWorksCorrectly() {
+
+        employee.setSalary(10);
+        assertEquals(10,employee.getSalary());
+    }
+
+
+
 }
