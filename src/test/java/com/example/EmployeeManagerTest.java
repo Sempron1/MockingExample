@@ -8,8 +8,7 @@ import org.mockito.Spy;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class EmployeeManagerTest {
@@ -27,5 +26,15 @@ class EmployeeManagerTest {
 
         assertTrue(employees.get(0).isPaid());
     }
+
+    @Test
+    void payEmployeesSetPaidToFalseIfItFails() {
+        EmployeeRepository employeeRepositoryDummy = new EmployeeRepositoryDummy();
+        BankService bankServiceDummy = new BankServiceDummy();
+        EmployeeManager employeeManager = new EmployeeManager(employeeRepositoryDummy,bankServiceDummy );
+        employeeManager.payEmployees();
+        assertFalse(employeeRepositoryDummy.findAll().get(0).isPaid());
+    }
+    
 
 }
