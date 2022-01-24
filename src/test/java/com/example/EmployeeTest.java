@@ -1,10 +1,10 @@
 package com.example;
 
+import com.example.model.Employee;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.contains;
 
 class EmployeeTest {
 

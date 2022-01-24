@@ -1,11 +1,9 @@
 package com.example;
 
+import com.example.dao.EmployeeRepository;
+import com.example.model.Employee;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Spy;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,8 +25,8 @@ class EmployeeManagerTest {
         assertTrue(employees.get(0).isPaid());
     }
 
-    @Test
-    void payEmployeesSetPaidToFalseIfItFails() {
+    /* @Test
+   void payEmployeesSetPaidToFalseIfItFails() {
         EmployeeRepository employeeRepositoryDummy = new EmployeeRepositoryDummy();
         BankService bankServiceDummy = new BankServiceDummy();
         EmployeeManager employeeManager = new EmployeeManager(employeeRepositoryDummy,bankServiceDummy );
@@ -49,7 +47,7 @@ class EmployeeManagerTest {
 
         assertEquals(3, employeeManager.payEmployees());
 
-    }
+    }*/
     
 
 }

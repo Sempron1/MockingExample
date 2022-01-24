@@ -1,14 +1,26 @@
-package com.example;
+package com.example.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Employee {
 
+	@Id
+	@GeneratedValue
 	private String id;
+
 	private double salary;
 	private boolean paid;
 
 	public Employee(String id, double salary) {
 		this.id = id;
 		this.salary = salary;
+	}
+
+	public Employee() {
+
 	}
 
 	public String getId() {

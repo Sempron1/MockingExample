@@ -1,5 +1,8 @@
 package com.example;
 
+import com.example.dao.EmployeeRepository;
+import com.example.model.Employee;
+
 import java.util.List;
 
 public class EmployeeManager {
