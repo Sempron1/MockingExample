@@ -35,6 +35,21 @@ class EmployeeManagerTest {
         employeeManager.payEmployees();
         assertFalse(employeeRepositoryDummy.findAll().get(0).isPaid());
     }
+
+    @Test
+    void payEmployeesWillReturnCorrectAmountOfPaymentsMade() {
+
+        EmployeeRepository employeeRepository = mock(EmployeeRepository.class);
+        BankService bankService = mock(BankService.class);
+
+        List<Employee> employees = List.of(new Employee("1",10), new Employee("2",20), new Employee("3",30));
+        when(employeeRepository.findAll()).thenReturn(employees);
+        EmployeeManager employeeManager = new EmployeeManager(employeeRepository,bankService);
+        employeeManager.payEmployees();
+
+        assertEquals(3, employeeManager.payEmployees());
+
+    }
     
 
 }
