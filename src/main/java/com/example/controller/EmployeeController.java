@@ -9,11 +9,15 @@ import java.util.List;
 
 public class EmployeeController {
     @Autowired
-    private EmployeeRepository employeeRepository;
+    public EmployeeRepository employeeRepository;
+
+    public EmployeeController(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
     public String saveEmployee(Employee employee){
         employeeRepository.save(employee);
-        return "Employee saved..";
+        return "Employee saved";
     }
 
     public List<Employee> getAll(){
