@@ -18,7 +18,7 @@ class GameTest {
     @Test
     void knockedDownedPinsShouldIncreaseTotalScore() {
         Game game = new Game();
-        game.pins(10);
+        game.addRollToScore(10);
         var result = game.score();
         assertEquals(10, result);
     }
@@ -59,8 +59,8 @@ class GameTest {
         Game game = new Game();
         game.roll(1);
         game.roll(1);
-        assertEquals(1, game.rollPoints.get(0));
-        assertEquals(1, game.rollPoints.get(1));
+        assertEquals(1, game.rollList.get(0));
+        assertEquals(1, game.rollList.get(1));
     }
 
 
@@ -74,7 +74,7 @@ class GameTest {
         game.roll(1);
 
 
-        assertEquals(12, game.rollPoints.get(0));
+        assertEquals(12, game.rollList.get(0));
         assertEquals(14, game.score());
     }
 
@@ -108,8 +108,8 @@ class GameTest {
         game.roll(1);
         game.roll(1);
 
-        assertEquals(21, game.rollPoints.get(0));
-        assertEquals(12, game.rollPoints.get(1));
+        assertEquals(21, game.rollList.get(0));
+        assertEquals(12, game.rollList.get(1));
     }
 
     @Test
@@ -133,7 +133,7 @@ class GameTest {
         game.roll(10);
         game.roll(10);
 
-        assertEquals(30, game.rollPoints.get(0));
+        assertEquals(30, game.rollList.get(0));
         assertEquals(50, game.score());
     }
 
@@ -165,7 +165,7 @@ class GameTest {
         game.roll(3);
         game.roll(2);
         game.roll(3);
-        assertEquals(10,game.score());
+        assertEquals(10, game.score());
 
     }
 
