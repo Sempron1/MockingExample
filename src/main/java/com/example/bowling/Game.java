@@ -76,22 +76,26 @@ public class Game {
 
     public void addPointsToPreviousRoundStrike(boolean strike){
         if(rollPoints.size() >= 3 && strike){
-            if(rollPoints.get(rollPoints.size() -3) == 10){
-                int previousRolls = rollPoints.get(rollPoints.size() -2) +  rollPoints.get(rollPoints.size() -1);
-                int newScore = rollPoints.get(rollPoints.size() -3) + previousRolls;
-                rollPoints.set(rollPoints.size()-3,newScore);
+            if(rollPoints.get(position(3)) == 10){
+                int previousRolls = rollPoints.get(position(2)) +  rollPoints.get(position(1));
+                int newScore = rollPoints.get(position(3)) + previousRolls;
+                rollPoints.set(position(3),newScore);
                 pins(previousRolls);
             }
         }
     }
 
+    private int position(int pos) {
+        return rollPoints.size() -pos;
+    }
+
     public void addRollPointsToPreviousRoundSpare(boolean spare) {
         if(roundCounter == 11 && spare){
-           totalScore -= rollPoints.get(rollPoints.size() - 1);
+           totalScore -= rollPoints.get(position(1));
             finishMessage();
         }
         if(spare && rollCount%2 != 0){
-            pins(rollPoints.get(rollPoints.size() -1));
+            pins(rollPoints.get(position(1)));
             this.spare = false;
         }
 

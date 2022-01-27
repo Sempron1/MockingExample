@@ -8,7 +8,7 @@ class GameTest {
 
 
     @Test
-    void ScoreMethodShouldReturnTotalScore() {
+    void scoreMethodShouldReturnTotalScore() {
         Game game = new Game();
 
         int result = game.score();
@@ -47,7 +47,7 @@ class GameTest {
     }
 
     @Test
-    void AfterRollMethodIsCalledTheTotalPinsLeftShouldDecreaseDependingOnKnockedDownPins() {
+    void afterRollMethodIsCalledTheTotalPinsLeftShouldDecreaseDependingOnKnockedDownPins() {
         Game game = new Game();
         game.roll(1);
         assertEquals(9, game.pins);
@@ -55,7 +55,7 @@ class GameTest {
 
 
     @Test
-    void ListShouldSaveEveryScoreFromEveryIndividualRoll() {
+    void listShouldSaveEveryScoreFromEveryIndividualRoll() {
         Game game = new Game();
         game.roll(1);
         game.roll(1);
@@ -65,7 +65,7 @@ class GameTest {
 
 
     @Test
-    void WhenYouGetAStrikeNextRoundPointsShouldGoToThePreviousRoundPoints() {
+    void whenYouGetAStrikeNextRoundPointsShouldGoToThePreviousRoundPoints() {
         Game game = new Game();
 
 
@@ -79,7 +79,7 @@ class GameTest {
     }
 
     @Test
-    void WhenYouGetASpareNextRollPointsShouldGoToThePreviousRoundPoints() {
+    void whenYouGetASpareNextRollPointsShouldGoToThePreviousRoundPoints() {
         Game game = new Game();
 
         game.roll(5);
@@ -92,7 +92,7 @@ class GameTest {
     }
 
     @Test
-    void WhenThePlayerGetsAStrikeNextRoundShouldImmediatelyStart() {
+    void whenThePlayerGetsAStrikeNextRoundShouldImmediatelyStart() {
         Game game = new Game();
         game.roll(10);
 
@@ -100,7 +100,7 @@ class GameTest {
     }
 
     @Test
-    void TwoStrikesInARow() {
+    void twoStrikesInARowShouldStillGetTheirOwnBonusRolls() {
         Game game = new Game();
 
         game.roll(10);
@@ -113,7 +113,7 @@ class GameTest {
     }
 
     @Test
-    void TwoSparesInARow() {
+    void twoSparesOfFiveShouldEqual25TotalPoints() {
         Game game = new Game();
 
         game.roll(5);
@@ -127,7 +127,7 @@ class GameTest {
     }
 
     @Test
-    void ThreeStrikesInARow() {
+    void threeStrikesInARowShouldEqual50TotalPoints() {
         Game game = new Game();
         game.roll(10);
         game.roll(10);
@@ -138,26 +138,18 @@ class GameTest {
     }
 
     @Test
-    void TenStrikesInARowPlusBonusRollsShouldBe300Points() {
+    void tenStrikesInARowPlusBonusRollsShouldBe300Points() {
         Game game = new Game();
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
-        game.roll(10);
+
+        for (int i = 0; i < 12; i++) {
+            game.roll(10);
+        }
 
         assertEquals(300, game.score());
     }
 
     @Test
-    void TenSparesInaRowPlusBonusShouldBeXXXPoints() {
+    void tenSparesInaRowPlusBonusShouldBe150Points() {
         Game game = new Game();
 
         for (int i = 0; i < 21; i++) {
@@ -167,7 +159,7 @@ class GameTest {
     }
 
     @Test
-    void noSpareShouldNotAddNextScoreToPreviousRound() {
+    void nonSpareRollShouldNotAddNextRollToScore() {
         Game game = new Game();
         game.roll(2);
         game.roll(3);
