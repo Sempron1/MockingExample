@@ -22,6 +22,16 @@ class EmployeeControllerTest {
         employeeController.saveEmployee(employee1);
         assertEquals(1,employeeController.getAll().size());
     }
+    @Test
+    void getAllPrintsOutAllEmployeesInTheList() {
+        Employee employee1 = new Employee("1",20);
+        EmployeeRepositoryTest employeeRepositoryTest = new EmployeeRepositoryTest();
+        EmployeeController employeeController = new EmployeeController(employeeRepositoryTest);
+        employeeController.saveEmployee(employee1);
+
+        assertEquals(employeeController.getAll(),employeeController.getAll());
+    }
+
 
 
 
