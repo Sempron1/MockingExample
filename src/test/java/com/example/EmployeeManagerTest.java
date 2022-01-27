@@ -25,7 +25,7 @@ class EmployeeManagerTest {
         assertTrue(employees.get(0).isPaid());
     }
 
-    /* @Test
+     @Test
    void payEmployeesSetPaidToFalseIfItFails() {
         EmployeeRepository employeeRepositoryDummy = new EmployeeRepositoryDummy();
         BankService bankServiceDummy = new BankServiceDummy();
@@ -47,7 +47,7 @@ class EmployeeManagerTest {
 
         assertEquals(3, employeeManager.payEmployees());
 
-    }*/
+    }
     
 
 }
