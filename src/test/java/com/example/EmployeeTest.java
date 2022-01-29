@@ -1,10 +1,8 @@
 package com.example;
 
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.contains;
+
 
 class EmployeeTest {
 
@@ -17,14 +15,14 @@ class EmployeeTest {
     }
 
     @Test
-    void setSalaryAndGetSalaryWorksCorrectly() {
+    void setSalaryAndGetSalaryShouldReturnExpectedValues() {
 
         employee.setSalary(10);
         assertEquals(10,employee.getSalary());
     }
 
     @Test
-    void setIdAndGetIdWorksCorrectly() {
+    void setIdAndGetIdShouldReturnExpectedValues() {
 
         employee.setId("2");
         assertEquals("2",employee.getId());
@@ -32,13 +30,13 @@ class EmployeeTest {
     }
 
     @Test
-    void setPaidAndGetPaidWorksCorrectly() {
+    void setPaidAndGetPaidShouldReturnExpectedValues() {
         employee.setPaid(true);
         assertTrue(employee.isPaid());
     }
 
     @Test
-    void toStringMethodReturnsCorrectString() {
+    void toStringMethodShouldReturnCorrectString() {
 
         var value = "Employee [id=" + employee.getId() + ", salary=" + employee.getSalary() + "]";
 

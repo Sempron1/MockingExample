@@ -28,7 +28,7 @@ class EmployeeManagerTest {
     }
 
     @Test
-    void payEmployeesSetPaidToFalseIfItFails() {
+    void isPaidShouldBeFalseIfPaymentFails() {
         EmployeeRepository employeeRepositoryDummy = new EmployeeRepositoryDummy();
         BankService bankServiceDummy = new BankServiceDummy();
         EmployeeManager employeeManager = new EmployeeManager(employeeRepositoryDummy,bankServiceDummy );
@@ -37,7 +37,7 @@ class EmployeeManagerTest {
     }
 
     @Test
-    void payEmployeesWillReturnCorrectAmountOfPaymentsMade() {
+    void payEmployeesShouldReturnCorrectAmountOfPaymentsMade() {
 
         EmployeeRepository employeeRepository = mock(EmployeeRepository.class);
         BankService bankService = mock(BankService.class);
